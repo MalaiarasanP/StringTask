@@ -6,22 +6,24 @@ import com.zoho.customtaskexception.*;
 
 public class StringRunner{
 public static void main(String[] args){
-	
 	System.out.println("=========== String Tasks =============");
 	System.out.print("1.Length of the String\n2.Convert String into char array\n3.Displaying a character of a string\n4.No. of occurence of character\n5.Greatest position of a character\n6.Displaying last Few characters of a string\n7.Displaying first few characters of a string\n8.Replacing characters in a string\n9.check whether the string starts with the original string \n10.check whether the string ends with the original string\n11.UPPERCASE\n12.lowercase\n13.Reverse a string\n14.Multiple words in a single line\n15.Convert a string into string array using a seperator\n16.Comparing strings\n17.Removing extra spaces in the beginning and the end\n18.Merging strings with a character in between\n19.Retrieve a String from command line arguments\n20.Exit\n");
+	
 	System.out.println("======================================");
 	boolean exit;
 	int selectOperation=0;
 	String input="";
 	Scanner scanner = new Scanner(System.in);
 	StringTask word = new StringTask();
+	try{
 	do{
+		
 		exit = true;
 		if(!(0<selectOperation&&selectOperation<21)){
 			selectOperation=getValidIntegerInput(scanner,"Select an operation : ");
 			if(!(0<selectOperation&&selectOperation<21)){
-			System.out.println("Please enter a number between (1-19)");
-		continue;
+				System.out.println("Please enter a number between (1-19)");
+				continue;
 		}
 		}
 	try{
@@ -224,9 +226,20 @@ public static void main(String[] args){
 	}
 	catch(CustomTaskException error){
 		System.out.println("Error : "+ error.getMessage());
+		System.out.println("Exception : "+ error.getClass().getName());
+		Throwable cause = error.getCause();
+		if(cause!=null){
+			System.out.println("Root cause : "+ cause.getMessage());
+			System.out.println("Root cause Exception : "+ cause.getClass().getName());
+			}
+		
+		}
+	}while(exit);
+	}
+	finally{
+		scanner.close();
 		}
 	
-	}while(exit);
 	
 }
 public static String getValidInputString(Scanner scanner,String prompt){
@@ -235,7 +248,7 @@ public static String getValidInputString(Scanner scanner,String prompt){
 	str = scanner.nextLine();
 	return str;
 	}
-public static int getValidIntegerInput(Scanner scanner, String prompt) {
+public static int getValidIntegerInput(Scanner scanner, String prompt){
     int input=0;
     boolean validInput = false;
     while (!validInput) {
