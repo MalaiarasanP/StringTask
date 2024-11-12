@@ -6,15 +6,14 @@ import com.zoho.customstringexception.*;
 
 public class StringRunner {
     StringTask task = new StringTask();
-    
+
     public static void main(String[] args) {
         System.out.println("=========== String Tasks =============");
         System.out.print("1.Length of the String entered in the command line argument\n2.Convert String into char array\n3.Displaying a character of a string\n4.No. of occurence of character\n5.Greatest position of a character\n6.Displaying last Few characters of a string\n7.Displaying first few characters of a string\n8.Replacing characters in a string\n9.check whether the string starts with the original string \n10.check whether the string ends with the original string\n11.UPPERCASE\n12.lowercase\n13.Reverse a string\n14.Multiple words in a single line\n15.Multiple String in a single line after removing spaces\n16.Convert a string into string array using a seperator\n17.Merging strings with a character in between\n18.Comparing Strings (case sensitive)\n19.Comparing Strings (case insensitive)\n20.Removing extra spaces in the beginning and the end\n21.Exit\n");
         System.out.println("======================================");
         boolean exit;
         StringRunner runner = new StringRunner();
-        
-        try(Scanner scanner = new Scanner(System.in)){
+        try(Scanner scanner = new Scanner(System.in)) {
             do {
                 exit = false;
                 try {
@@ -104,9 +103,11 @@ public class StringRunner {
                     }
                     case 21: {
                         exit = true;
+                        break;
                     }
                     default : {
                         System.out.println("Please enter a number between (1-21)");
+                        break;
                     }
                     }
                 } catch(StringRunnerException exception) {
@@ -118,10 +119,10 @@ public class StringRunner {
                         System.out.println("Root cause Exception : "+ cause.getClass().getName());
                     }
                 }
-                
+
             } while(!exit);
-            }
-            
+        }
+
     }
     private String getLength(String[] args) throws StringRunnerException {
         try {
@@ -230,6 +231,7 @@ public class StringRunner {
             }
             default: {
                 throw new StringRunnerException("Select a proper option");
+                break;
             }
             }
             return modifiedString;
