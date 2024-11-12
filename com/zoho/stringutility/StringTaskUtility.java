@@ -1,6 +1,6 @@
-package com.zoho.utility;
+package com.zoho.stringutility;
 import java.util.*;
-import com.zoho.customexception.customstringexception.*;
+import com.zoho.customstringexception.*;
 public abstract class StringTaskUtility {
     public static void checkNullString(String... inputs) throws StringUtilityException {
         for(String input : inputs) {

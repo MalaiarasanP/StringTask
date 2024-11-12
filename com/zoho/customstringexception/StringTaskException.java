@@ -1,4 +1,4 @@
-package com.zoho.customexception.customstringexception;
+package com.zoho.customstringexception;
 
 public class StringTaskException extends CustomStringException {
     public StringTaskException(String errorMessage) {

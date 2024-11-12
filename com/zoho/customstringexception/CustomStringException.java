@@ -1,4 +1,4 @@
-package com.zoho.customexception.customstringexception;
+package com.zoho.customstringexception;
 public class CustomStringException extends Exception {
     public CustomStringException(String errorMessage) {
         super(errorMessage);

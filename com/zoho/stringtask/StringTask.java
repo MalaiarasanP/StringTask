@@ -1,7 +1,7 @@
-package com.zoho.task;
+package com.zoho.stringtask;
 import java.util.*;
-import com.zoho.customexception.customstringexception.*;
-import com.zoho.utility.*;
+import com.zoho.customstringexception.*;
+import com.zoho.stringutility.*;
 import java.util.regex.Pattern;
 public class StringTask {
     public int getLength(String str) throws CustomStringException {
@@ -19,11 +19,11 @@ public class StringTask {
     public int getNoOfOccurences(char character,String str) throws CustomStringException {
         StringTaskUtility.checkInvalidString(str);
         int noOfOcc=0;
-       for(char stringCharacter : str.toCharArray()) {
-   		if(stringCharacter == character){
-        		noOfOcc++;
-        	}
-	}
+        for(char stringCharacter : str.toCharArray()) {
+            if(stringCharacter == character) {
+                noOfOcc++;
+            }
+        }
         return noOfOcc;
     }
     public int getGreatestPosition(char character,String str) throws CustomStringException {
