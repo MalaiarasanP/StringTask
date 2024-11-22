@@ -6,25 +6,17 @@ public class StringBuilderTask {
     public StringBuilder createStringBuilder() {
         return new StringBuilder();
     }
-    public StringBuilder createStringBuilder(List<? extends CharSequence> inputs) throws CustomException {
+    public StringBuilder createStringBuilder(List<? extends CharSequence> appendInputs,String seperator) throws CustomException {
         StringBuilder stringBuilder = new StringBuilder();
-        return appendInputToBuilder(stringBuilder,inputs);
+        return appendInput(stringBuilder,appendInputs,seperator);
     }
-    public StringBuilder appendInputToBuilder(StringBuilder stringBuilder,List<? extends CharSequence> appendInputs) throws CustomException {
-        StringSequenceUtility.validateNonNull(stringBuilder);
-        StringSequenceUtility.validateSequenceList(appendInputs);
-        for(CharSequence appendInput : appendInputs) {
-            stringBuilder.append(appendInput);
-        }
-        return stringBuilder;
-    }
-    public StringBuilder appendInputWithSeperator(StringBuilder stringBuilder,List<? extends CharSequence> appendInputs,String seperator) throws CustomException {
+    public StringBuilder appendInput(StringBuilder stringBuilder,List<? extends CharSequence> appendInputs,String seperator) throws CustomException {
         StringSequenceUtility.validateNonNull(stringBuilder,seperator);
         StringSequenceUtility.validateSequenceList(appendInputs);
         int listSize = appendInputs.size();
         for(int i=0; i<listSize; i++) {
             stringBuilder.append(appendInputs.get(i));
-            if(i<listSize-1) {
+            if(!seperator.isEmpty() && i<listSize-1) {
                 stringBuilder.append(seperator);
             }
         }

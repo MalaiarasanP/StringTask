@@ -9,6 +9,11 @@ public abstract class StringSequenceUtility {
             }
         }
     }
+    public static void validateNonNull(Scanner scanner) throws UtilityValidationException {
+    	if (scanner == null) {
+            throw new UtilityValidationException("Null scanner");
+        }
+    }
     public static void validateNotEmpty(CharSequence... inputs) throws UtilityValidationException {
         for(CharSequence input : inputs) {
             if(input==null) {
@@ -47,22 +52,12 @@ public abstract class StringSequenceUtility {
             throw new UtilityValidationException("Exceed max character");
         }
     }
-    private static boolean isInvalidSequenceList(List<? extends CharSequence> list) {
-        if (list == null) {
-            return true;
-        }
-        for (CharSequence element : list) {
-            if (element != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-    public static void validateSequenceList(List<? extends CharSequence> list) throws UtilityValidationException{
-    	if(isInvalidSequenceList(list)){
-    		throw new UtilityValidationException("Invalid String list");
+    public static void validateSequenceList(List<? extends CharSequence> list) throws UtilityValidationException {
+    	if (list == null || list.stream().anyMatch(element -> element == null)) {
+        	throw new UtilityValidationException("Invalid String list");
     	}
     }
+
     public static void validateIndexRange(int startIndex,int endIndex,CharSequence input) throws UtilityValidationException {
     	checkOutOfRangeIndex(startIndex,input);
     	checkOutOfRangeIndex(endIndex,input);
@@ -74,23 +69,28 @@ public abstract class StringSequenceUtility {
 	validateNonNull(input);
 	return input.length();
     }
-    public static int getValidIntegerInput(Scanner scanner, String prompt) {
+    public static int getValidIntegerInput(Scanner scanner, String prompt) throws UtilityValidationException{
+	validateNonNull(prompt);
+	validateNonNull(scanner);
         int input=0;
         boolean validInput = false;
         while (!validInput) {
             System.out.print(prompt);
             try {
                 input = scanner.nextInt();
-                scanner.nextLine();
                 validInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid integer.");
-                scanner.nextLine();
+            }
+            finally{
+            	scanner.nextLine();
             }
         }
         return input;
     }
-    public static String getValidInputString(Scanner scanner,String prompt) {
+    public static String getValidInputString(Scanner scanner,String prompt) throws UtilityValidationException{
+    	validateNonNull(scanner);
+    	validateNonNull(prompt);
         System.out.print(prompt);
         String str = scanner.nextLine();
         return str;
