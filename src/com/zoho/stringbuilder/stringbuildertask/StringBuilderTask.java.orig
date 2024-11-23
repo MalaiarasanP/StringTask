@@ -35,7 +35,7 @@ public class StringBuilderTask {
         int start = calculateStartPosition(inputs, separator, index);
         int end = start + inputs.get(index).length();
         if (index < inputs.size() - 1) {
-            end += separator.length();
+            end += separator.length(); 
         }
         return stringBuilder.delete(start, end);
     }
@@ -43,7 +43,7 @@ public class StringBuilderTask {
         StringSequenceUtility.validateNonNull(newSeparator,oldSeparator,stringBuilder);
         int index = stringBuilder.indexOf(oldSeparator);
         while (index != -1) {
-            stringBuilder.replace(index, index + oldSeparator.length(), newSeparator);
+            stringBuilder.replace(index, index + oldSeparator.length(), newSeparator); 
             index = stringBuilder.indexOf(oldSeparator, index + newSeparator.length());
         }
         return stringBuilder;

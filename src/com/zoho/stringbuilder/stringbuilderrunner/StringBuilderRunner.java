@@ -27,7 +27,7 @@ public class StringBuilderRunner {
             do {
                 exit = false;
                 try {
-                    int selectOperation = StringSequenceUtility.getValidIntegerInput(scanner,"Select an operation : ");
+                    int selectOperation = InputOutputUtility.getValidIntegerInput(scanner,"Select an operation : ");
                     switch(selectOperation) {
                     case 1: {
                         builderRunner.buildAndAppendBuilder();
@@ -88,12 +88,12 @@ public class StringBuilderRunner {
             System.out.println("=== Task 1: Create an empty StringBuilder and add a string ===");
             StringBuilder stringBuilder = builderTask.createStringBuilder();
             System.out.println("Empty StringBuilder is created successfully.");
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
             System.out.println("== Append strings to the StringBuilder ==");
-            List<String> strings = getStringList();
+            List<String> strings = InputOutputUtility.getStringList(scanner);
             builderTask.appendInput(stringBuilder,strings,emptySeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -102,13 +102,13 @@ public class StringBuilderRunner {
     public void buildAndAppendWithSeperator() throws CustomException {
         try {
             System.out.println("=== Task 2: Create a StringBuilder, add strings with a separator ===");
-            List<String> strings = getStringList();
+            List<String> strings = InputOutputUtility.getStringList(scanner);
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,emptySeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            String seperator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            String seperator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             builderTask.appendInput(stringBuilder,strings,seperator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -117,15 +117,15 @@ public class StringBuilderRunner {
     public void buildAndInsertStringBuilder() throws CustomException {
         try {
             System.out.println("=== Task 3: Create a StringBuilder with strings and insert another string in between === ");
-            List<String> strings = getStringList();
-            String separator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String separator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,separator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            int position = StringSequenceUtility.getValidIntegerInput(scanner,"Enter the index no. to insert :");
-            String insertInput = StringSequenceUtility.getValidInputString(scanner,"Enter the string to insert :");
+            int position = InputOutputUtility.getValidIntegerInput(scanner,"Enter the index no. to insert :");
+            String insertInput = InputOutputUtility.getValidInputString(scanner,"Enter the string to insert :");
             builderTask.insertStringAfterIndex(stringBuilder,strings,separator,insertInput,position);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -134,14 +134,14 @@ public class StringBuilderRunner {
     public void buildAndDeleteStringBuilder() throws CustomException {
         try {
             System.out.println("=== Task 4: Create a StringBuilder with strings and delete a selected string ===");
-            List<String> strings = getStringList();
-            String separator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String separator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,separator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            int position = StringSequenceUtility.getValidIntegerInput(scanner,"Enter the index no. to delete that string :");
+            int position = InputOutputUtility.getValidIntegerInput(scanner,"Enter the index no. to delete that string :");
             builderTask.deleteStringAtIndex(stringBuilder,strings,separator,position);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -150,14 +150,14 @@ public class StringBuilderRunner {
     public void buildAndReplaceDelimiter() throws CustomException {
         try {
             System.out.println("=== Task 5: Create a StringBuilder with strings separated by a separator and replace old seperator with 'new seperator === ");
-            List<String> strings = getStringList();
-            String oldSeparator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String oldSeparator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,oldSeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            String newSeparator = StringSequenceUtility.getValidInputString(scanner,"Enter new seperator to replace the old one :");
+            String newSeparator = InputOutputUtility.getValidInputString(scanner,"Enter new seperator to replace the old one :");
             builderTask.replaceSeperator(stringBuilder,oldSeparator,newSeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -166,14 +166,14 @@ public class StringBuilderRunner {
     public void buildAndDeleteStringInRange() throws CustomException {
         try {
             System.out.println("=== Task 7: Create a StringBuilder and delete characters from index range === ");
-            List<String> strings = getStringList();
+            List<String> strings = InputOutputUtility.getStringList(scanner);
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,emptySeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            int startIndex = StringSequenceUtility.getValidIntegerInput(scanner,"Enter start index of the range to delete:");
-            int endIndex = StringSequenceUtility.getValidIntegerInput(scanner,"Enter end index of the range to delete :");
+            int startIndex = InputOutputUtility.getValidIntegerInput(scanner,"Enter start index of the range to delete:");
+            int endIndex = InputOutputUtility.getValidIntegerInput(scanner,"Enter end index of the range to delete :");
             builderTask.deleteStringInRange(stringBuilder,startIndex,endIndex);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -183,13 +183,13 @@ public class StringBuilderRunner {
     public void buildAndReverseStringBuilder() throws CustomException {
         try {
             System.out.println("=== Task 6: Create a StringBuilder and reverse the string ===  ");
-            List<String> strings = getStringList();
-            String separator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String separator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,separator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
             builderTask.getReversedStringBuilder(stringBuilder);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -198,15 +198,15 @@ public class StringBuilderRunner {
     public void buildAndReplaceCharactersInStringBuilder() throws CustomException {
         try {
             System.out.println("=== Task 8: Create a StringBuilder and replace characters in index range with a string === ");
-            List<String> strings = getStringList();
+            List<String> strings = InputOutputUtility.getStringList(scanner);
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,emptySeparator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            String replacementInput = StringSequenceUtility.getValidInputString(scanner,"Enter replacement string :");
-            int startIndex = StringSequenceUtility.getValidIntegerInput(scanner,"Enter start index of the range to delete:");
-            int endIndex = StringSequenceUtility.getValidIntegerInput(scanner,"Enter end index of the range to delete :");
+            String replacementInput = InputOutputUtility.getValidInputString(scanner,"Enter replacement string :");
+            int startIndex = InputOutputUtility.getValidIntegerInput(scanner,"Enter start index of the range to delete:");
+            int endIndex = InputOutputUtility.getValidIntegerInput(scanner,"Enter end index of the range to delete :");
             builderTask.replaceStringInRange(stringBuilder,startIndex,endIndex,replacementInput);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Final String : "+stringBuilder.toString());
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
@@ -215,12 +215,12 @@ public class StringBuilderRunner {
     public void buildAndFindFirstIndexOfStringBuilder() throws CustomException {
         try {
             System.out.println("9: Create a StringBuilder with strings separated by a separator and find the index of the first separator === ");
-            List<String> strings = getStringList();
-            String separator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String separator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,separator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            String instanceString = StringSequenceUtility.getValidInputString(scanner,"Enter character :");
+            String instanceString = InputOutputUtility.getValidInputString(scanner,"Enter character :");
             int index = builderTask.findFirstSeperatorIndex(stringBuilder,instanceString);
             System.out.println("Index of the first instance of the entered charcter : "+ index);
         } catch(Exception exception) {
@@ -230,38 +230,20 @@ public class StringBuilderRunner {
     public void buildAndFindLastIndexOfStringBuilder() throws CustomException {
         try {
             System.out.println("=== Task 10: Create a StringBuilder with strings separated by a seperator and find the index of the last seperator ===  ");
-            List<String> strings = getStringList();
-            String separator = StringSequenceUtility.getValidInputString(scanner,"Enter seperator :");
+            List<String> strings = InputOutputUtility.getStringList(scanner);
+            String separator = InputOutputUtility.getValidInputString(scanner,"Enter seperator :");
             StringBuilder stringBuilder = builderTask.createStringBuilder(strings,separator);
-            getLength(stringBuilder);
+            displayLength(stringBuilder);
             System.out.println("Initial String : "+stringBuilder.toString());
-            String instanceString = StringSequenceUtility.getValidInputString(scanner,"Enter character:");
+            String instanceString = InputOutputUtility.getValidInputString(scanner,"Enter character:");
             int index = builderTask.findLastSeperatorIndex(stringBuilder,instanceString);
             System.out.println("Index of the first instance of the seperator : "+ index);
         } catch(Exception exception) {
             throw new StringBuilderException("Exception occurs",exception);
         }
     }
-    public void getLength(StringBuilder stringBuilder) throws CustomException {
+    public void displayLength(StringBuilder stringBuilder) throws CustomException {
         System.out.println("Length of the StringBuilder : "+StringSequenceUtility.getLength(stringBuilder));
-    }
-    public List<String> getStringList() {
-        ArrayList<String> strings = new ArrayList<>();
-        boolean exit = false;
-        int n=1;
-        System.out.println("Enter the strings you want to append to the StringBuilder.");
-        System.out.println("Press Enter on an empty line to finish.");
-        while(!exit) {
-            System.out.print("String "+n+ " : ");
-            String toMerge= scanner.nextLine();
-            if (toMerge.isEmpty()) {
-                exit = true;
-            } else {
-                strings.add(toMerge);
-                n++;
-            }
-        }
-        return strings;
     }
 
 }

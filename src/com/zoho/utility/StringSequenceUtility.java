@@ -69,30 +69,4 @@ public abstract class StringSequenceUtility {
 	validateNonNull(input);
 	return input.length();
     }
-    public static int getValidIntegerInput(Scanner scanner, String prompt) throws UtilityValidationException{
-	validateNonNull(prompt);
-	validateNonNull(scanner);
-        int input=0;
-        boolean validInput = false;
-        while (!validInput) {
-            System.out.print(prompt);
-            try {
-                input = scanner.nextInt();
-                validInput = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
-            }
-            finally{
-            	scanner.nextLine();
-            }
-        }
-        return input;
-    }
-    public static String getValidInputString(Scanner scanner,String prompt) throws UtilityValidationException{
-    	validateNonNull(scanner);
-    	validateNonNull(prompt);
-        System.out.print(prompt);
-        String str = scanner.nextLine();
-        return str;
-    }
 }
